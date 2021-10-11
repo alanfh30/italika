@@ -1,0 +1,55 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+            xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+            
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Italika</title>
+</head>
+<body>
+    <header>
+
+        <h1>Cotizaciones de crédito realizadas</h1>
+
+    </header>
+    <br>
+    <a th:href = "@{/agregar}">Generar cotizacion</a>
+    <div th:if = "${cotizaciones != null and !cotizaciones.empty}">
+        <table>
+            <tr>
+                <th>Modelo</th>
+                <th>Version</th>
+                <th>Fecha de cotizacion</th>
+            </tr>
+            <tr th:each = "cotizacion: ${cotizaciones}">
+                <td>
+                    <span th:text = "${cotizacion.modelo}"></span>
+                </td>
+                <td>
+                    <span th:text = "${cotizacion.version}"></span>
+                </td>
+                <td>
+                    <span th:text = "${cotizacion.fecha}"></span>
+                </td>
+               
+            </tr>
+        </table>
+
+
+
+    </div>
+
+    <div th:if = "${cotizaciones == null or cotizaciones.empty}">
+        <p> Aún no se ha registrado ninguna cotización</p>
+    </div>
+    <br>
+    <br>
+    <footer> <h3>
+        Flores Hernandez José Alan
+    </h3>
+</footer>
+
+</body>
+</html>

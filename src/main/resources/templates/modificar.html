@@ -1,0 +1,49 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Nueva Cotizacion</title>
+</head>
+<body>
+        <header>
+            <h1>
+                Registra una nueva cotización
+            </h1>
+        </header>
+
+        <a th:href="@{/}">Regresar</a>
+        
+        <br>
+        <br>
+
+
+        <form th:action="@{/guardar}" method="post" th:object = "${cotizacionModel}">
+            <div class="mb-3">
+
+            <input  type="hidden" name="id" th:field = "*{id}">
+            <input class="form-control" type="text" name="modelo" th:field = "*{modelo}" placeholder="modelo">
+            <br>
+            <input class="form-control" type="text" name="version" th:field = "*{version}" placeholder="version">
+            <br>
+            <input class="form-control" type="date" name="fecha" th:field = "*{fecha}" placeholder="fecha">
+
+            <br>
+            <input class="form-control" type="number" name="costoDesglosado" th:field = "*{costoDesglosado}" placeholder="Costo Desglosado">
+            <br>
+
+            <br>
+            <input class="form-control" type="number" name="costoTotal" th:field = "*{costoTotal}" placeholder="Costo Total">
+            <br>
+            <br>
+            <input  class="form-control" type="number" name="montoEnganche" th:field = "*{montoEnganche}" placeholder="Monto Enganche">
+            <br>
+
+            <input type="submit" name="guardar" value="Guardar datos y obtener cotizacion">
+        </div>
+        </form>
+
+</body>
+</html>
