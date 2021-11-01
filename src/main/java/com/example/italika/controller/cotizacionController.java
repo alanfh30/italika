@@ -1,9 +1,12 @@
 package com.example.italika.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.example.italika.models.cotizacionModel;
+import com.example.italika.models.interesadoModel;
 import com.example.italika.services.cotizacionService;
+import com.example.italika.services.interesadoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,12 +31,19 @@ public class cotizacionController {
     @Autowired
     cotizacionService cotizacionService;
 
+    @Autowired
+    interesadoService interesadoService;
+
 
     @GetMapping ("/")
     public String inicio(Model model){
 
         var cotizaciones = cotizacionService.obtenerCotizacion();    
         model.addAttribute("cotizaciones", cotizaciones);
+        for (cotizacionModel cotizacionModel : cotizaciones) {
+            System.out.println(cotizaciones);
+        }
+        
         return "index";
     }
 
@@ -57,5 +67,13 @@ public class cotizacionController {
     @PostMapping("/cotizacion")
     public cotizacionModel guardarCotizacion(@RequestBody cotizacionModel usuario){
         return this.cotizacionService.guardarCotizacion(usuario);
+    }
+
+
+    @GetMapping("/usuarios/{id}")
+    public String verUsuarios(interesadoModel interesado, Model model){
+        var cotizaciones = interesadoService.obtenerCotizaciones(interesado);
+        model.addAttribute("cotizaciones", cotizaciones);
+        return "personas";
     }
 }   

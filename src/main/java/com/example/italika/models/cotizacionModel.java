@@ -1,17 +1,17 @@
 package com.example.italika.models;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.*;
-
-import org.springframework.web.servlet.FlashMapManager;
-
 
 @Entity
 @Table(name="cotizacion")
 
 
-public class cotizacionModel {
+public class cotizacionModel implements Serializable  {
+
+    private static final long serialVersion = 1L;
 
 
     @Id
@@ -27,6 +27,11 @@ public class cotizacionModel {
     private Integer costoDesglosado;
     private Integer costoTotal;
     private Integer montoEnganche;
+    
+    @OneToOne
+    @JoinColumn(name = "id")
+    private interesadoModel interesado;
+
 
 
     public void setModelo(String modelo){

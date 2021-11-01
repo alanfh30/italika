@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 import org.springframework.web.servlet.FlashMapManager;
+import java.util.List;
 
 
 @Entity
@@ -13,13 +14,12 @@ import org.springframework.web.servlet.FlashMapManager;
 
 public class interesadoModel {
     
+    private static final long serialVersion = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
-
-
     
     private String nombre;
     private String numeroCelular;
@@ -59,6 +59,14 @@ public class interesadoModel {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public List<cotizacionModel> getCotizaciones() {
+        return cotizaciones;
+    }
+
+    public void setCotizaciones(cotizacionModel cotizaciones) {
+        this.cotizaciones = (List<cotizacionModel>) cotizaciones;
     }
 
 

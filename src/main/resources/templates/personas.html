@@ -1,0 +1,45 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Nueva Cotizacion</title>
+</head>
+<body>
+        <header>
+            <h1>
+
+                Personas            
+            </h1>
+        </header>
+
+        <a th:href="@{/}">Regresar</a>
+        
+        <br>
+        <br>
+
+        <br>
+        <a th:href = "@{/agregar}">Generar cotizacion</a>
+
+        <div th:if = "${cotizaciones != null and !cotizaciones.empty}">
+            <table>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Version</th>
+                    <th>Fecha de cotizacion</th>
+                </tr>
+                <tr th:each = "cotizacion: ${cotizaciones}">
+                    <td>
+                        <span th:text = "${cotizacion}"></span>
+                    </td>
+                   
+                </tr>
+            </table>
+        </div>
+    
+
+
+</body>
+</html>

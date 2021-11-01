@@ -19,31 +19,35 @@
         <br>
         <br>
 
-
+        <div class="formulario" style="width: fit-content;">
+        
         <form th:action="@{/guardar}" method="post" th:object = "${cotizacionModel}">
-            <div class="mb-3">
 
-            <input  type="hidden" name="id" th:field = "*{id}">
-            <input class="form-control" type="text" name="modelo" th:field = "*{modelo}" placeholder="modelo">
-            <br>
-            <input class="form-control" type="text" name="version" th:field = "*{version}" placeholder="version">
-            <br>
-            <input class="form-control" type="date" name="fecha" th:field = "*{fecha}" placeholder="fecha">
+            
 
-            <br>
-            <input class="form-control" type="number" name="costoDesglosado" th:field = "*{costoDesglosado}" placeholder="Costo Desglosado">
-            <br>
+                    <input  type="hidden" name="id" th:field = "*{id}">
+                    <input class="form-control" type="text" name="modelo" th:field = "*{modelo}" placeholder="modelo" required>
+            
+                    <br>
+                    <input class="form-control" type="text" name="version" th:field = "*{version}" placeholder="version" required>
+                    <br>
+                    <input class="form-control" type="date" name="fecha" th:field = "*{fecha}" placeholder="fecha" required>
 
             <br>
-            <input class="form-control" type="number" name="costoTotal" th:field = "*{costoTotal}" placeholder="Costo Total">
+            <input class="form-control" type="number" name="costoDesglosado" th:field = "*{costoDesglosado}" placeholder="Costo Desglosado" required>
+            <br>
+
+            <input class="form-control" type="number" name="costoTotal" th:field = "*{costoTotal}" placeholder="Costo Total" required>
             <br>
             <br>
-            <input  class="form-control" type="number" name="montoEnganche" th:field = "*{montoEnganche}" placeholder="Monto Enganche">
+            <input  class="form-control" type="number" name="montoEnganche" th:field = "*{montoEnganche}" placeholder="Monto Enganche" required>
             <br>
 
             <input type="submit" name="guardar" value="Guardar datos y obtener cotizacion">
-        </div>
+        
         </form>
+    </div>
+
 
 </body>
 </html>
