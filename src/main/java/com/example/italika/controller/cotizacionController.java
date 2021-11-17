@@ -86,3 +86,5 @@ public class cotizacionController {
 /* cambio desde local en rama directa master
  
 /* cambio desde local en rama personal
+
+/* cambio rama personal a master usando consola
