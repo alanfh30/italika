@@ -21,9 +21,8 @@
         <br>
 
         <br>
-        <a th:href = "@{/agregar}">Generar cotizacion</a>
+        
 
-        <div th:if = "${cotizaciones != null and !cotizaciones.empty}">
             <table>
                 <tr>
                     <th>Modelo</th>
@@ -32,14 +31,20 @@
                 </tr>
                 <tr th:each = "cotizacion: ${cotizaciones}">
                     <td>
-                        <span th:text = "${cotizacion}"></span>
+                        <span th:text = "${cotizacion.modelo}"></span>
                     </td>
+                    <td>
+                        <span th:text = "${cotizacion.version}"></span>
+                    </td>
+                    <td>
+                        <span th:text = "${cotizacion.fecha}"></span>
+                    </td>
+    
                    
                 </tr>
             </table>
-        </div>
     
 
-
+            <a th:href = "@{/agregar}">Generar cotizacion</a>
 </body>
 </html>
