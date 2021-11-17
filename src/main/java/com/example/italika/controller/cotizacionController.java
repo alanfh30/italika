@@ -40,10 +40,7 @@ public class cotizacionController {
 
         var cotizaciones = cotizacionService.obtenerCotizacion();    
         model.addAttribute("cotizaciones", cotizaciones);
-        for (cotizacionModel cotizacionModel : cotizaciones) {
-            System.out.println(cotizaciones);
-        }
-        
+
         return "index";
     }
 
@@ -59,9 +56,13 @@ public class cotizacionController {
     }
 
     
-    @GetMapping("/cotizacion")
-    public ArrayList<cotizacionModel> obtenerCotizacion(){
-        return cotizacionService.obtenerCotizacion();
+    @GetMapping("/cotizacion/{id}")
+    public String obtenerCotizacion(Model model,cotizacionModel cotizacionModel){
+        var cotizacion = cotizacionService.findbyid(cotizacionModel);
+        model.addAttribute("cotizacion", cotizacion);
+        log.info("usuario que hizo login" + cotizacion);
+
+        return "personas";
     }
 
     @PostMapping("/cotizacion")
@@ -70,11 +71,14 @@ public class cotizacionController {
     }
 
 
-    @GetMapping("/usuarios/{id}")
-    public String verUsuarios(interesadoModel interesado, Model model){
-        var cotizaciones = interesadoService.obtenerCotizaciones(interesado);
+    @GetMapping("/cotizaciones/{id_usuario}")
+    public String cotizacionesById(Model model,cotizacionModel cotizacionModel){
+        var cotizaciones =  cotizacionService.encontrarCotizacionesByIds(cotizacionModel);
         model.addAttribute("cotizaciones", cotizaciones);
+        log.info("usuario que hizo login" + cotizaciones);
+
         return "personas";
     }
+   
 }   
 /* Comment from github

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class interesadoService {
 
@@ -27,17 +29,15 @@ public class interesadoService {
 
  
     @Transactional(readOnly = true)
-    public ArrayList<String> obtenerCotizaciones(interesadoModel interesado) {
+    public ArrayList<String> obtenerCotizacion(interesadoModel interesado) {
         
-        interesadoModel usuario = interesadoRepository.findById(interesado.getId()).orElse(null);
-    
-    var cotizaciones = new ArrayList<String>();
+        var cotizaciones = new ArrayList<String>();
         
-    for (cotizacionModel rol: usuario.getCotizaciones()){
-        cotizaciones.add(rol.getModelo());
-    }
-    
-    return cotizaciones;
+        for (cotizacionModel cotizacion: interesado.getCotizaciones()){
+            cotizaciones.add(cotizacion.getModelo());
+        }
+
+        return cotizaciones;
     }
 
 
